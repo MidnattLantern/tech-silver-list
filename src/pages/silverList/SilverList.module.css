@@ -1,0 +1,36 @@
+.SilverListBaseModule{
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the track */
+    border-radius: 10px; /* Rounded corners */
+}
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the thumb */
+    border-radius: 10px; /* Rounded corners */
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.Test{
+    margin: 25px;
+    width: auto;
+    border: 1px solid var(--edge);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    background-color: var(--dark-transparent);
+    backdrop-filter: blur(25px);
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+
+}
+
+h1{
+    color: var(--white);
+}

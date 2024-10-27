@@ -1,0 +1,10 @@
+Context that is accessible globaly across silver list
+
+Silver List use UUID
+``` bash
+npm install uuid
+```
+because of Typescript
+``` bash
+npm install @types/uuid --save-dev
+```

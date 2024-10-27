@@ -1,6 +1,13 @@
 
 Tech Silver List was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Theme font:
+``` css
+{
+font-family: 'Ewert', cursive;
+}
+```
+
 Tech Silver List is deployed to GitHub pages by following these steps:
 1. Install gh-pages Package:
 bash:
