@@ -1,5 +1,6 @@
 import Styles from './App.module.css';
 import BackgroundLayer from './pages/backgroundLayer/BackgroundLayer';
+import ContextMenu from './pages/contextMenu/ContextMenu';
 import SilverListManager from './pages/silverListManager/SilverListManager';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
 
       <BackgroundLayer />
       <SilverListManager />
+      <ContextMenu />
 
     </div>
   );

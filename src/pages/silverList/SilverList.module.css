@@ -20,6 +20,7 @@
 .Test{
     margin: 25px;
     width: auto;
+    height: 120px;
     border: 1px solid var(--edge);
     border-left-width: 3px;
     border-right-width: 3px;
@@ -27,10 +28,33 @@
     backdrop-filter: blur(25px);
     overflow: scroll;
     display: flex;
+    align-items: center;
     flex-direction: row;
-
 }
 
 h1{
     color: var(--white);
+    cursor: pointer;
+}
+
+/* --- SilverListItem --- */
+.SilverListItemBase{
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ItemNameText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    width: 100%;
+    height: 100%;
+}
+.ItemNameText:hover{
+    color: var(--theme);
+    cursor: pointer;
 }

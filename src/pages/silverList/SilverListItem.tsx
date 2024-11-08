@@ -1,3 +1,5 @@
+import Styles from "./SilverList.module.css";
+
 interface SilverListItemProps {
     item: {
         name: string;
@@ -6,7 +8,9 @@ interface SilverListItemProps {
 
 const SilverListItem: React.FC<SilverListItemProps> = ({ item }) => {
     return(<>
-        <h1>{item.name}</h1>
+        <div className={Styles.SilverListItemBase}>
+            <h1 className={Styles.ItemNameText}>{item.name}</h1>
+        </div>
     </>)
 }
 

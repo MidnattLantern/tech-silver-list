@@ -48,11 +48,11 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
     return (
         <SilverListContext.Provider value={{
             silverListArray,
+            holdSilverListItem,
             setSilverListArray,
             addSilverListItem,
             selectSilverListItem,
             eraseSilverListItem,
-            holdSilverListItem,
             setHoldSilverListItem,
         }}>
             {children}
