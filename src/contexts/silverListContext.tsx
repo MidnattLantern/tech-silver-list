@@ -10,12 +10,13 @@ interface SilverListItem {
     name: string;
 }
 interface SilverListContextType {
+    holdSilverListItem: any;
+    setHoldSilverListItem: React.Dispatch<React.SetStateAction<any>>;
     silverListArray: SilverListItem[];
     setSilverListArray: React.Dispatch<React.SetStateAction<SilverListItem[]>>;
     addSilverListItem: (newItem: SilverListItem) => void;
+    selectSilverListItem: (index: string) => void;
     eraseSilverListItem: (index: string) => void;
-    holdSilverListItem: any;
-    setHoldSilverListItem: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children }) => {
@@ -34,6 +35,10 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
         setHoldSilverListItem(newItem.id);
     };
 
+    const selectSilverListItem = (index: string) => {
+        setHoldSilverListItem(index)
+    };
+
     const eraseSilverListItem = (index: string) => {
         setSilverListArray((prevArray) =>
         prevArray.filter((item) => item.id !== index))
@@ -45,6 +50,7 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
             silverListArray,
             setSilverListArray,
             addSilverListItem,
+            selectSilverListItem,
             eraseSilverListItem,
             holdSilverListItem,
             setHoldSilverListItem,

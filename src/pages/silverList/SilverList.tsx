@@ -7,7 +7,7 @@ import SilverListItem from "./SilverListItem";
 const SilverList: React.FC = () => {
     const newItemIndex = uuidv4();
     const {
-        silverListArray, addSilverListItem, eraseSilverListItem, holdSilverListItem
+        silverListArray, addSilverListItem, eraseSilverListItem, holdSilverListItem, selectSilverListItem,
     } = useSilverList();
 
     const handleCreateItem = () => {
@@ -27,7 +27,9 @@ const SilverList: React.FC = () => {
             <div className={Styles.Test}>
 
                 {silverListArray.map((item, index) => (
-                    <SilverListItem key={index} item={item}/>
+                    <div onClick={() => {selectSilverListItem(item.id)}}>
+                        <SilverListItem key={index} item={item} />
+                    </div>
                 ))}
 
                 <button onClick={() => {handleCreateItem()}}>new item</button>
