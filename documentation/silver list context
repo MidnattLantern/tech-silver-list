@@ -8,3 +8,24 @@ because of Typescript
 ``` bash
 npm install @types/uuid --save-dev
 ```
+
+Any context provider, such as silverListContext need to wrap <App /> inside index.tsx so that it can be accessible across the entire app. Like this:
+```javascript
+root.render(
+  <React.StrictMode>
+    <SilverListProvider>
+      <App />
+    </SilverListProvider>
+  </React.StrictMode>
+);
+```
+
+Currently, the array hold an id and a name. More items can be added depending on needs.
+
+silverListArray retrieve the array.
+setSilverListArray is the link to CRUD actions.
+addSilverListItem create an item. UUID is not provided by this context component.
+
+Interface for creating,
+Interface for erasing,
+Interface for holding a current item by index,

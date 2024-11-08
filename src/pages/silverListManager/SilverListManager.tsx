@@ -1,14 +1,9 @@
-import { useSilverList } from "../../contexts/silverListContext";
 import SilverList from "../silverList/SilverList";
 
-const SilverListManager = () => {
-    const {
-        silverListArray,
-    } = useSilverList();
+const SilverListManager: React.FC = () => {
 
     return(<>
-    <SilverList />
-    <button onClick={() => {console.log(silverListArray)}}>check</button>
+        <SilverList />
     </>)
 };
 
