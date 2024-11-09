@@ -7,8 +7,16 @@ const ContextMenu: React.FC = () => {
     } = useSilverList();
     return(<>
         <div className={Styles.ContextMenuBase}>
-            <p>silverListArray: {silverListArray.length}</p>
-            <p>holdSilverListItem: {holdSilverListItem}</p>
+            <div className={Styles.LeftDiv}>
+                <p>Item count: {silverListArray.length}</p>
+                <p>Item key: {holdSilverListItem}</p>
+            </div>
+            <div className={Styles.CenterDiv}>
+                <button onClick={() => {console.log(silverListArray.find((item) => item.id === holdSilverListItem))}}>test</button>
+            </div>
+            <div className={Styles.RightDiv}>
+                <p>right div</p>
+            </div>
         </div>
     </>)
 }

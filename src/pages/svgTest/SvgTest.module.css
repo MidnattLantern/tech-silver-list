@@ -1,0 +1,9 @@
+.SvgTest {
+    stroke: black;
+    fill: none;
+    stroke-width: 2px;
+    transition: all 0.3s ease-in-out; /* Adjust duration and easing as needed */
+  }
+.SvgTest:hover{
+    opacity: 0.0;
+}

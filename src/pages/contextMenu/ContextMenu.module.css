@@ -4,8 +4,27 @@
     width: 100%;
     padding: 10px;
     background-color: var(--dark);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 p{
     color: var(--white-offset);
+}
+
+.LeftDiv{
+    margin-left: 0px;
+    margin-right: 5px;
+    width: 30%;
+}
+.CenterDiv{
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 30%;
+}
+.RightDiv{
+    margin-left: 5px;
+    margin-right: 0px;
+    width: 30%;
 }

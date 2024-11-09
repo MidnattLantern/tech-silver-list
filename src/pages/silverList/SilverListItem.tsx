@@ -18,7 +18,7 @@ const SilverListItem: React.FC<SilverListItemProps> = ({ item, holdSilverListIte
         }, 0);
         setTimeout(() => {
             setBornAnimationKey2(true);
-        }, 500);
+        }, 0);
     }, []);
 
     return(<>

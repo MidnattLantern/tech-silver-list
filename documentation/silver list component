@@ -6,5 +6,5 @@ interface SilverListProps {
     handleCreateItem: () => void;
 }
 
-const SilverList: React.FC<SilverListProps> = ({ handleCreateItem }) => {...
+const SilverList: React.FC<SilverListProps> = ({ handleCreateItem }) => {...}
 ```
