@@ -28,13 +28,20 @@ const SilverList: React.FC = () => {
 
                 {silverListArray.map((item, index) => (
                     <div onClick={() => {selectSilverListItem(item.id)}}>
-                        <SilverListItem key={index} item={item} />
+                        <SilverListItem key={index} item={item} holdSilverListItem={holdSilverListItem}/>
                     </div>
                 ))}
 
-                <button onClick={() => {handleCreateItem()}}>new item</button>
-                <button onClick={() => {handleEraseItem()}}>delete item</button>
-                <p>{holdSilverListItem}</p>
+            <div className={Styles.SilverListItemBase} onClick={() => {handleCreateItem()}}>
+                <h1 className={Styles.ItemNameText}>+ Add</h1>
+            </div>
+            
+                {holdSilverListItem !== null ?
+                    <div className={Styles.SilverListItemBase} onClick={() => {handleEraseItem()}}>
+                        <h1 className={Styles.ItemNameText}>Erase</h1>
+                    </div>
+                : null}
+
             </div>
         </div>
     </>)
