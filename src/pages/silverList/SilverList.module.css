@@ -3,7 +3,8 @@
     height: 7.5px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--dark-transparent);
+/*    background: var(--dark-transparent);*/
+    background: rgba(0,0,0,0);
     border-radius: 2.5px;
 }
 ::-webkit-scrollbar-thumb {
@@ -18,7 +19,7 @@
     width: 100%;
 }
 
-.Test{
+.SilverListWindow{
     margin: 25px;
     width: auto;
     height: 100px;

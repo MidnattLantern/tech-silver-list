@@ -3,8 +3,9 @@ import { useSilverList } from "../../contexts/silverListContext";
 
 const ContextMenu: React.FC = () => {
     const {
-        silverListArray, holdSilverListItem,
+        silverListArray, holdSilverListItem, holdSilverListItemName,
     } = useSilverList();
+
     return(<>
         <div className={Styles.ContextMenuBase}>
             <div className={Styles.LeftDiv}>
@@ -12,7 +13,7 @@ const ContextMenu: React.FC = () => {
                 <p>Item key: {holdSilverListItem}</p>
             </div>
             <div className={Styles.CenterDiv}>
-                <button onClick={() => {console.log(silverListArray.find((item) => item.id === holdSilverListItem))}}>test</button>
+                <p>Item name: {holdSilverListItemName ? (holdSilverListItemName) : (null)}</p>
             </div>
             <div className={Styles.RightDiv}>
                 <p>right div</p>
