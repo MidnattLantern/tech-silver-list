@@ -8,6 +8,7 @@
   --white: rgb(210, 200, 200);
   --white-offset: rgb(245, 190, 175);
   --theme-font: 'Ewert', cursive;
+  --formfield-font: "Gudea", sans-serif;
 }
 
 body {

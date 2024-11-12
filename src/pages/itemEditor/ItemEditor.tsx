@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const ItemEditor: React.FC = () => {
     const {
-        holdSilverListItem, holdSilverListItemName, eraseSilverListItem, deselectSilverListItem,
+        holdSilverListItem, holdSilverListItemName, eraseSilverListItem, deselectSilverListItem, handleChangeItemName
     } = useSilverList();
 
     // detect mouse position
@@ -19,6 +19,9 @@ const ItemEditor: React.FC = () => {
         };
     }, []);
 
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        handleChangeItemName(event.target.value);
+    };
     const handleEraseItem = () => {
         eraseSilverListItem(holdSilverListItem)
     };
@@ -29,7 +32,6 @@ const ItemEditor: React.FC = () => {
     return(<>
         <div className={Styles.ItemEditorBase}>
 
-        {holdSilverListItem ? 
             <div // Element that follow the cursor
             style={{
             position: 'absolute',
@@ -37,21 +39,21 @@ const ItemEditor: React.FC = () => {
             top: `100px`,
             }}
             >
-                <div className={Styles.EditorWindow}>
+                <div className={`${Styles.EditorWindow} ${holdSilverListItem ? Styles.EditorWindowShow : Styles.EditorWindowHide}`}>
                     <form>
                         <input
                         type="text"
                         id="name"
                         name="name"
-                        value={holdSilverListItemName}
+                        value={holdSilverListItemName || ''}
                         className={Styles.NameFormField}
+                        onChange={handleInputChange}
                         />
                     </form>
                     <h1 className={Styles.EraseButton} onClick={() => {handleDeselectItem()}}>Deselect</h1>
                     <h1 className={Styles.EraseButton} onClick={() => {handleEraseItem()}}>Erase</h1>
                 </div>
             </div>
-        : null}
 
         </div>
     </>)

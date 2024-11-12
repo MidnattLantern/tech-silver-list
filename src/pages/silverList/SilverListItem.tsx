@@ -22,7 +22,6 @@ const SilverListItem: React.FC<SilverListItemProps> = ({ item, holdSilverListIte
     }, []);
 
     return(<>
-
         <div className={`
         ${Styles.SilverListItemBase}
         ${bornAnimationKey1 ? Styles.BornAnimationKey1After : Styles.BornAnimationKey1Before}

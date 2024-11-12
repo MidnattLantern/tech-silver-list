@@ -18,6 +18,7 @@ interface SilverListContextType {
     setSilverListArray: React.Dispatch<React.SetStateAction<SilverListItem[]>>;
     addSilverListItem: (newItem: SilverListItem) => void;
     selectSilverListItem: (index: string) => void;
+    handleChangeItemName: (index: string) => void;
     eraseSilverListItem: (index: string) => void;
     deselectSilverListItem: any;
 }
@@ -43,6 +44,15 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
         setHoldSilverListItem(index)
     };
 
+    const handleChangeItemName = (newName: string) => {
+        setSilverListArray((prevArray) =>
+            prevArray.map((item) =>
+                item.id === holdSilverListItem ? {...item, name: newName} : item
+            )
+        );
+        setHoldSilverListItemName(newName);
+    };
+
     const eraseSilverListItem = (index: string) => {
         setSilverListArray((prevArray) =>
         prevArray.filter((item) => item.id !== index))
@@ -66,6 +76,7 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
             setSilverListArray,
             addSilverListItem,
             selectSilverListItem,
+            handleChangeItemName,
             eraseSilverListItem,
             setHoldSilverListItem,
             setHoldSilverListItemName,
