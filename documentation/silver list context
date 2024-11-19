@@ -31,3 +31,5 @@ Interface for creating,
 Interface for erasing,
 Interface for holding a current item by index,
 Interface for selecting,
+
+holdSilverListArrayIndex is different from holdSilverListItem, as it keep track of the array

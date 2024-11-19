@@ -10,6 +10,8 @@ interface SilverListItem {
     name: string;
 }
 interface SilverListContextType {
+    holdSilverListArrayIndex: any;
+    setHoldSilverListArrayIndex: React.Dispatch<React.SetStateAction<any>>;
     holdSilverListItem: any;
     setHoldSilverListItem: React.Dispatch<React.SetStateAction<any>>;
     holdSilverListItemName: any;
@@ -27,11 +29,12 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
     const [silverListArray, setSilverListArray] = useState<{ id: any; name: any }[]>([
         /*
         {
-            id: "origin-id-1",
-            name: "eggbert",
+            id: "dummy-id-1",
+            name: "dummy-1",
         },
         */
     ]);
+    const [holdSilverListArrayIndex, setHoldSilverListArrayIndex] = useState<any>(null);
     const [holdSilverListItem, setHoldSilverListItem] = useState<any>(null);
     const [holdSilverListItemName, setHoldSilverListItemName] = useState<any>(null);
 
@@ -66,13 +69,21 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
     useEffect(() => {
         const foundItem = silverListArray.find((item) => item.id === holdSilverListItem);
         setHoldSilverListItemName(foundItem ? foundItem.name : null); // foundItem help extract the name specifically
+        if (foundItem) {
+            setHoldSilverListArrayIndex(silverListArray.findIndex((item) => item.id === foundItem.id))
+        } else {
+            setHoldSilverListArrayIndex(null)
+        }
+
       }, [holdSilverListItem, silverListArray]);
 
     return (
         <SilverListContext.Provider value={{
+            holdSilverListArrayIndex,
             silverListArray,
             holdSilverListItem,
             holdSilverListItemName,
+            setHoldSilverListArrayIndex,
             setSilverListArray,
             addSilverListItem,
             selectSilverListItem,
