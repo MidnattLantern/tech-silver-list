@@ -2,7 +2,7 @@ import { useSilverList } from "../../contexts/silverListContext";
 
 const PilotMoveItem: React.FC = () => {
     const {
-        moveSilverListItemLeft, moveSilverListItemRight, holdSilverListArrayIndex, silverListArray,
+        moveSilverListItemLeft, moveSilverListItemRight, holdSilverListArrayIndex, silverListArray, selectSilverListItemLeft, selectSilverListItemRight,
     } = useSilverList();
 
     const moveLeftButton = () => {
@@ -25,11 +25,34 @@ const PilotMoveItem: React.FC = () => {
         </>)
     };
 
+    const selectLeftButton = () => {
+        return(<>
+            {holdSilverListArrayIndex-1 >= 0 ? (<>
+                <button onClick={() => {selectSilverListItemLeft()}}>select left</button>
+            </>) : (<>
+                <button onClick={() => {}}>out of range</button>
+            </>)}
+        </>)
+    };
+
+    const selectRightButton = () => {
+        return(<>
+            {holdSilverListArrayIndex+1 < silverListArray.length ? (<>
+                <button onClick={() => {selectSilverListItemRight()}}>select right</button>
+            </>) : (<>
+                <button onClick={() => {}}>out of range</button>
+            </>)}
+        </>)
+    };
+
     return(<>
     <h1>pilot move item</h1>
 
         {moveLeftButton()}
         {moveRightButton()}
+        <br/>
+        {selectLeftButton()}
+        {selectRightButton()}
 
     </>)
 };

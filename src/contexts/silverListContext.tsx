@@ -25,6 +25,8 @@ interface SilverListContextType {
     deselectSilverListItem: any;
     moveSilverListItemLeft: any;
     moveSilverListItemRight: any;
+    selectSilverListItemLeft: any;
+    selectSilverListItemRight: any;
 }
 
 export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children }) => {
@@ -88,6 +90,24 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
         }
     };
 
+    const selectSilverListItemLeft = () => {
+        if (holdSilverListArrayIndex-1 >= 0) { // check if you can select the left
+            setHoldSilverListArrayIndex(holdSilverListArrayIndex-1)
+            setHoldSilverListItem(silverListArray[holdSilverListArrayIndex-1].id)
+        } else {
+            console.log("out of range")
+        }
+    };
+
+    const selectSilverListItemRight = () => { // check if you can select the right
+        if (holdSilverListArrayIndex+1 < silverListArray.length) {
+            setHoldSilverListArrayIndex(holdSilverListArrayIndex+1)
+            setHoldSilverListItem(silverListArray[holdSilverListArrayIndex+1].id)
+        } else {
+            console.log("out of range")
+        }
+    };
+
     useEffect(() => {
         const foundItem = silverListArray.find((item) => item.id === holdSilverListItem);
         setHoldSilverListItemName(foundItem ? foundItem.name : null); // foundItem help extract the name specifically
@@ -116,6 +136,8 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
             deselectSilverListItem,
             moveSilverListItemLeft,
             moveSilverListItemRight,
+            selectSilverListItemLeft,
+            selectSilverListItemRight,
         }}>
             {children}
         </SilverListContext.Provider>
