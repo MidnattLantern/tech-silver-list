@@ -23,6 +23,8 @@ interface SilverListContextType {
     handleChangeItemName: (index: string) => void;
     eraseSilverListItem: (index: string) => void;
     deselectSilverListItem: any;
+    moveSilverListItemLeft: any;
+    moveSilverListItemRight: any;
 }
 
 export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children }) => {
@@ -59,11 +61,31 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
     const eraseSilverListItem = (index: string) => {
         setSilverListArray((prevArray) =>
         prevArray.filter((item) => item.id !== index))
-        setHoldSilverListItem(null)
+        setHoldSilverListItem(null);
     };
 
     const deselectSilverListItem = () => {
-        setHoldSilverListItem(null)
+        setHoldSilverListItem(null);
+    };
+
+    const moveSilverListItemLeft = () => {
+        if (holdSilverListArrayIndex-1 >= 0) { // check if you can move to the left
+            silverListArray.splice(holdSilverListArrayIndex-1, 0, {id: holdSilverListItem, name: holdSilverListItemName}); // duplicate
+            silverListArray.splice(holdSilverListArrayIndex+1, 1); // erase original
+            setHoldSilverListArrayIndex(holdSilverListArrayIndex-1) // hold everything else happen automatically
+        } else {
+            console.log("out of range")
+        }
+    };
+
+    const moveSilverListItemRight = () => { // check if you can move to the right
+        if (holdSilverListArrayIndex+1 < silverListArray.length) {
+            silverListArray.splice(holdSilverListArrayIndex+2, 0, {id: holdSilverListItem, name: holdSilverListItemName}); // duplicate
+            silverListArray.splice(holdSilverListArrayIndex, 1); // erase original
+            setHoldSilverListArrayIndex(holdSilverListArrayIndex+1) // hold everything else happen automatically
+        } else {
+            console.log("out of range")
+        }
     };
 
     useEffect(() => {
@@ -92,6 +114,8 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
             setHoldSilverListItem,
             setHoldSilverListItemName,
             deselectSilverListItem,
+            moveSilverListItemLeft,
+            moveSilverListItemRight,
         }}>
             {children}
         </SilverListContext.Provider>
