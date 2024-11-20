@@ -1,23 +1,31 @@
 import Styles from "./ItemEditor.module.css";
 import { useSilverList } from "../../contexts/silverListContext";
 import { useEffect, useState } from "react";
+import RearrangeButtons from "./RearrangeButtons";
 
 const ItemEditor: React.FC = () => {
     const {
-        holdSilverListItem, holdSilverListItemName, eraseSilverListItem, deselectSilverListItem, handleChangeItemName
+        holdSilverListItem, holdSilverListItemName,
+        eraseSilverListItem,
+        deselectSilverListItem,
+        handleChangeItemName,
+        followCursor,
+        setFollowCursor,
     } = useSilverList();
 
     // detect mouse position
     const [position, setPosition] = useState({ x: 25 });
     useEffect(() => {
-        const handleMouseMove = (event: MouseEvent) => {
-            setPosition({ x: event.clientX -265 });
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => { // cleanup
-        window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
+        if (followCursor){
+            const handleMouseMove = (event: MouseEvent) => {
+                setPosition({ x: event.clientX -150 });
+            };
+            window.addEventListener('mousemove', handleMouseMove);
+            return () => { // cleanup
+            window.removeEventListener('mousemove', handleMouseMove);
+            };
+        }
+    }, [followCursor]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         handleChangeItemName(event.target.value);
@@ -40,6 +48,12 @@ const ItemEditor: React.FC = () => {
             }}
             >
                 <div className={`${Styles.EditorWindow} ${holdSilverListItem ? Styles.EditorWindowShow : Styles.EditorWindowHide}`}>
+                    <div
+                    className={Styles.Grabbable}
+                    onMouseDown={() => {setFollowCursor(true)}}
+                    onMouseUp={() => {setFollowCursor(false)}}
+                    onMouseLeave={() => {setFollowCursor(false)}}
+                    />
                     <form>
                         <input
                         type="text"
@@ -52,6 +66,9 @@ const ItemEditor: React.FC = () => {
                     </form>
                     <h1 className={Styles.EraseButton} onClick={() => {handleDeselectItem()}}>Deselect</h1>
                     <h1 className={Styles.EraseButton} onClick={() => {handleEraseItem()}}>Erase</h1>
+
+<RearrangeButtons />
+
                 </div>
             </div>
 

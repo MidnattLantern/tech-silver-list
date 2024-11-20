@@ -27,6 +27,8 @@ interface SilverListContextType {
     moveSilverListItemRight: any;
     selectSilverListItemLeft: any;
     selectSilverListItemRight: any;
+    followCursor: boolean;
+    setFollowCursor: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children }) => {
@@ -71,42 +73,60 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
     };
 
     const moveSilverListItemLeft = () => {
-        if (holdSilverListArrayIndex-1 >= 0) { // check if you can move to the left
-            silverListArray.splice(holdSilverListArrayIndex-1, 0, {id: holdSilverListItem, name: holdSilverListItemName}); // duplicate
-            silverListArray.splice(holdSilverListArrayIndex+1, 1); // erase original
-            setHoldSilverListArrayIndex(holdSilverListArrayIndex-1) // hold everything else happen automatically
+        if (holdSilverListItem !== null){
+            if (holdSilverListArrayIndex-1 >= 0) { // check if you can move to the left
+                silverListArray.splice(holdSilverListArrayIndex-1, 0, {id: holdSilverListItem, name: holdSilverListItemName}); // duplicate
+                silverListArray.splice(holdSilverListArrayIndex+1, 1); // erase original
+                setHoldSilverListArrayIndex(holdSilverListArrayIndex-1) // hold everything else happen automatically
+            } else {
+                console.log("out of range")
+            }
         } else {
-            console.log("out of range")
+            console.log("no selected item")
         }
     };
 
     const moveSilverListItemRight = () => { // check if you can move to the right
-        if (holdSilverListArrayIndex+1 < silverListArray.length) {
-            silverListArray.splice(holdSilverListArrayIndex+2, 0, {id: holdSilverListItem, name: holdSilverListItemName}); // duplicate
-            silverListArray.splice(holdSilverListArrayIndex, 1); // erase original
-            setHoldSilverListArrayIndex(holdSilverListArrayIndex+1) // hold everything else happen automatically
+        if (holdSilverListItem !== null){
+            if (holdSilverListArrayIndex+1 < silverListArray.length) {
+                silverListArray.splice(holdSilverListArrayIndex+2, 0, {id: holdSilverListItem, name: holdSilverListItemName}); // duplicate
+                silverListArray.splice(holdSilverListArrayIndex, 1); // erase original
+                setHoldSilverListArrayIndex(holdSilverListArrayIndex+1) // hold everything else happen automatically
+            } else {
+                console.log("out of range")
+            }
         } else {
-            console.log("out of range")
+            console.log("no selected item")
         }
     };
 
     const selectSilverListItemLeft = () => {
-        if (holdSilverListArrayIndex-1 >= 0) { // check if you can select the left
-            setHoldSilverListArrayIndex(holdSilverListArrayIndex-1)
-            setHoldSilverListItem(silverListArray[holdSilverListArrayIndex-1].id)
+        if (holdSilverListItem !== null){
+            if (holdSilverListArrayIndex-1 >= 0) { // check if you can select the left
+                setHoldSilverListArrayIndex(holdSilverListArrayIndex-1)
+                setHoldSilverListItem(silverListArray[holdSilverListArrayIndex-1].id)
+            } else {
+                console.log("out of range")
+            }
         } else {
-            console.log("out of range")
+            console.log("no selected item")
         }
     };
 
     const selectSilverListItemRight = () => { // check if you can select the right
-        if (holdSilverListArrayIndex+1 < silverListArray.length) {
-            setHoldSilverListArrayIndex(holdSilverListArrayIndex+1)
-            setHoldSilverListItem(silverListArray[holdSilverListArrayIndex+1].id)
+        if (holdSilverListItem !== null){
+            if (holdSilverListArrayIndex+1 < silverListArray.length) {
+                setHoldSilverListArrayIndex(holdSilverListArrayIndex+1)
+                setHoldSilverListItem(silverListArray[holdSilverListArrayIndex+1].id)
+            } else {
+                console.log("out of range")
+            }
         } else {
-            console.log("out of range")
+            console.log("no selected item")
         }
     };
+
+    const [followCursor, setFollowCursor] = useState(false);
 
     useEffect(() => {
         const foundItem = silverListArray.find((item) => item.id === holdSilverListItem);
@@ -138,6 +158,8 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
             moveSilverListItemRight,
             selectSilverListItemLeft,
             selectSilverListItemRight,
+            followCursor,
+            setFollowCursor,
         }}>
             {children}
         </SilverListContext.Provider>

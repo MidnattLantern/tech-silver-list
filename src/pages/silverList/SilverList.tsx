@@ -7,7 +7,7 @@ import SilverListItem from "./SilverListItem";
 const SilverList: React.FC = () => {
     const newItemIndex = uuidv4();
     const {
-        silverListArray, addSilverListItem, holdSilverListItem, selectSilverListItem,
+        silverListArray, addSilverListItem, holdSilverListItem, selectSilverListItem, setFollowCursor,
     } = useSilverList();
 
     const handleCreateItem = () => {
@@ -20,7 +20,10 @@ const SilverList: React.FC = () => {
 
     return(<>
         <div className={Styles.SilverListBaseModule}>
-            <div className={Styles.SilverListWindow}>
+            <div className={Styles.SilverListWindow}
+            onMouseEnter={() => {setFollowCursor(true)}}
+            onMouseLeave={()=> {setFollowCursor(false)}}
+            >
 
                 {silverListArray.map((item, index) => (
                     <div onClick={() => {selectSilverListItem(item.id)}} onMouseEnter={() => {selectSilverListItem(item.id)}}>
