@@ -118,6 +118,7 @@ h1{
     min-width: 100%;
     height: 100%;
     animation: bornAnimaionKey2Expose 0.5s ease;
+    overflow: hidden;
 }
 .ItemNameText:hover{
     color: var(--theme);

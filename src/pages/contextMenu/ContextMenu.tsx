@@ -17,7 +17,8 @@ const ContextMenu: React.FC = () => {
                 <p>Selected array index: {holdSilverListArrayIndex}</p>
             </div>
             <div className={Styles.RightDiv}>
-                <p>right div</p>
+                <p>GitHub: <a target="_blank" href="https://github.com/MidnattLantern/tech-silver-list">github.com/MidnattLantern/tech-silver-list</a></p>
+                <p>Developer: <a target="_bland" href="https://github.com/MidnattLantern">github.com/MidnattLantern</a></p>
             </div>
         </div>
     </>)
