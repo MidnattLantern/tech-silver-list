@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/tech-silver-list/static/css/main.9ab0bba2.css",
-    "main.js": "/tech-silver-list/static/js/main.63d0853f.js",
+    "main.css": "/tech-silver-list/static/css/main.ad45ccaa.css",
+    "main.js": "/tech-silver-list/static/js/main.7ab2a4fd.js",
     "static/js/453.b2819665.chunk.js": "/tech-silver-list/static/js/453.b2819665.chunk.js",
     "static/media/SilverAmbientAnimation.gif": "/tech-silver-list/static/media/SilverAmbientAnimation.8422826f29dfaeddacd1.gif",
     "index.html": "/tech-silver-list/index.html",
-    "main.9ab0bba2.css.map": "/tech-silver-list/static/css/main.9ab0bba2.css.map",
-    "main.63d0853f.js.map": "/tech-silver-list/static/js/main.63d0853f.js.map",
+    "main.ad45ccaa.css.map": "/tech-silver-list/static/css/main.ad45ccaa.css.map",
+    "main.7ab2a4fd.js.map": "/tech-silver-list/static/js/main.7ab2a4fd.js.map",
     "453.b2819665.chunk.js.map": "/tech-silver-list/static/js/453.b2819665.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9ab0bba2.css",
-    "static/js/main.63d0853f.js"
+    "static/css/main.ad45ccaa.css",
+    "static/js/main.7ab2a4fd.js"
   ]
 }
