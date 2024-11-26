@@ -3,7 +3,7 @@ import { useSilverList } from "../../contexts/silverListContext";
 
 const ContextMenu: React.FC = () => {
     const {
-        silverListArray, holdSilverListItem, holdSilverListItemName, holdSilverListArrayIndex, windowSize
+        silverListArray, holdSilverListItem, holdSilverListItemName, holdSilverListArrayIndex, windowSize, followCursor,
     } = useSilverList();
 
     return(<>
@@ -14,6 +14,7 @@ const ContextMenu: React.FC = () => {
             <tr className={Styles.LeftDiv}>
                 <td>Window width: {windowSize.width}</td>
                 <td>Window height: {windowSize.height}</td>
+                <td>Follow cursor: {followCursor ? (<>true</>) : (<>false</>)}</td>
             </tr>
             <tr className={Styles.CenterDiv}>
                 <td>Item count: {silverListArray.length}</td>
