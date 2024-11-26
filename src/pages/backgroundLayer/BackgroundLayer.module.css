@@ -10,6 +10,7 @@
 .FitAmbience{
     width: 100%;
     height: 100%;
-    filter: blur(25px);
+    object-fit: cover;
+    filter: blur(15px);
     pointer-events: none;
 }

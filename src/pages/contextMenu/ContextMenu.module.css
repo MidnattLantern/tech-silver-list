@@ -2,14 +2,19 @@
     position: fixed;
     bottom: 0px;
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     background-color: var(--dark);
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-p{
+tr{
+    display: flex;
+    flex-direction: column;
+}
+
+td{
     color: var(--white-offset);
     font-size: 12.5px;
 }
@@ -17,17 +22,18 @@ p{
 .LeftDiv{
     margin-left: 0px;
     margin-right: 5px;
-    width: 30%;
+    width: 325px;
 }
 .CenterDiv{
     margin-left: 5px;
     margin-right: 5px;
-    width: 30%;
+    width: 325px;
 }
 .RightDiv{
     margin-left: 5px;
     margin-right: 0px;
-    width: 30%;
+    width: 325px;
+
 }
 
 a{

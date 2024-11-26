@@ -29,6 +29,7 @@ interface SilverListContextType {
     selectSilverListItemRight: any;
     followCursor: boolean;
     setFollowCursor: React.Dispatch<React.SetStateAction<boolean>>;
+    windowSize: any;
 }
 
 export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children }) => {
@@ -43,6 +44,10 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
     const [holdSilverListArrayIndex, setHoldSilverListArrayIndex] = useState<any>(null);
     const [holdSilverListItem, setHoldSilverListItem] = useState<any>(null);
     const [holdSilverListItemName, setHoldSilverListItemName] = useState<any>(null);
+    const [windowSize, setWindowSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
 
     const addSilverListItem = (newItem: SilverListItem) => {
         setSilverListArray((prevArray) => [...prevArray, newItem]);
@@ -137,6 +142,19 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
             setHoldSilverListArrayIndex(null)
         }
 
+        // browser window size
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+        window.addEventListener("resize", handleResize);
+
+        return () => { // cleanuup
+            window.removeEventListener('resize', handleResize);
+          };
+
       }, [holdSilverListItem, silverListArray]);
 
     return (
@@ -160,6 +178,7 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
             selectSilverListItemRight,
             followCursor,
             setFollowCursor,
+            windowSize,
         }}>
             {children}
         </SilverListContext.Provider>

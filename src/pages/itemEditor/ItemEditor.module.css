@@ -21,6 +21,7 @@
     cursor: default;
     justify-content: baseline;
     overflow: hidden;
+    backdrop-filter: blur(15px);
 }
 .EditorWindowShow{
     height: 215px;

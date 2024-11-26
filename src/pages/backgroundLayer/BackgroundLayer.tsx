@@ -1,7 +1,6 @@
 // styles
 import Styles from "./BackgroundLayer.module.css";
 import Ambience from "../../assets/wallpaper/SilverAmbientAnimation.gif";
-//import Ambience from "../../assets/wallpaper/smoke-wallpaper-5.jpg";
 
 const BackgroundLayer: React.FC = () => {
 

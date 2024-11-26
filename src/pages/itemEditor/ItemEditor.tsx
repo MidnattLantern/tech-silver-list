@@ -44,7 +44,7 @@ const ItemEditor: React.FC = () => {
             style={{
             position: 'absolute',
             left: `${position.x}px`,
-            top: `100px`,
+            top: `120px`,
             }}
             >
                 <div className={`${Styles.EditorWindow} ${holdSilverListItem ? Styles.EditorWindowShow : Styles.EditorWindowHide}`}>

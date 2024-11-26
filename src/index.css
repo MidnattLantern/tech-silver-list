@@ -1,8 +1,8 @@
 :root {
   --theme: rgb(200, 70, 70);
   --complementary: rgb(105, 95, 185);
-  --dark: rgb(23,20,26);
-  --dark-transparent: rgb(23,20,26,0.6);
+  --dark: rgb(23,18,28);
+  --dark-transparent: rgb(23,18,28,0.6);
   --edge: rgb(40,37,43);
   --void: rgb(26, 24, 28);
   --white: rgb(210, 200, 200);

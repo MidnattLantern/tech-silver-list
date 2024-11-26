@@ -13,7 +13,7 @@ const SilverList: React.FC = () => {
     const handleCreateItem = () => {
         const newItem = {
             id: newItemIndex,
-            name: "Item",
+            name: "item",
         };
         addSilverListItem(newItem);
     };
