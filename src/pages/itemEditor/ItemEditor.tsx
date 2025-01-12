@@ -11,6 +11,10 @@ const ItemEditor: React.FC = () => {
         handleChangeItemName,
         followCursor,
         setFollowCursor,
+        cursorXCoordinate,
+        setCursorXCoordinate,
+        silverListUIWidth,
+        windowSize,
     } = useSilverList();
 
     // detect mouse position
@@ -18,14 +22,15 @@ const ItemEditor: React.FC = () => {
     useEffect(() => {
         if (followCursor){
             const handleMouseMove = (event: MouseEvent) => {
-                setPosition({ x: event.clientX -150 });
+                setPosition({ x: ((event.clientX) -(180/(windowSize.width/2 /event.clientX)))});
+                setCursorXCoordinate({ x: event.clientX });
             };
             window.addEventListener('mousemove', handleMouseMove);
             return () => { // cleanup
             window.removeEventListener('mousemove', handleMouseMove);
             };
         }
-    }, [followCursor]);
+    }, [followCursor, setCursorXCoordinate, silverListUIWidth, cursorXCoordinate, windowSize]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         handleChangeItemName(event.target.value);
@@ -54,7 +59,7 @@ const ItemEditor: React.FC = () => {
                     onMouseUp={() => {setFollowCursor(false)}}
                     onMouseLeave={() => {setFollowCursor(false)}}
                     />
-                    <form>
+                    <form onSubmit={(event) => {event.preventDefault()}}>
                         <input
                         type="text"
                         id="name"
