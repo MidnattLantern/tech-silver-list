@@ -30,6 +30,10 @@ interface SilverListContextType {
     followCursor: boolean;
     setFollowCursor: React.Dispatch<React.SetStateAction<boolean>>;
     windowSize: any;
+    silverListUIWidth: any;
+    setSilverListUIWidth: (index: number) => void;
+    cursorXCoordinate: any;
+    setCursorXCoordinate: (index: any) => void;
 }
 
 export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children }) => {
@@ -48,6 +52,8 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
         width: window.innerWidth,
         height: window.innerHeight,
     });
+    const [silverListUIWidth, setSilverListUIWidth] = useState<any>(null);
+    const [cursorXCoordinate, setCursorXCoordinate] = useState<any>(0);
 
     const addSilverListItem = (newItem: SilverListItem) => {
         setSilverListArray((prevArray) => [...prevArray, newItem]);
@@ -179,6 +185,10 @@ export const SilverListProvider: React.FC<SilverListProviderProps> = ({ children
             followCursor,
             setFollowCursor,
             windowSize,
+            silverListUIWidth,
+            setSilverListUIWidth,
+            cursorXCoordinate,
+            setCursorXCoordinate,
         }}>
             {children}
         </SilverListContext.Provider>
